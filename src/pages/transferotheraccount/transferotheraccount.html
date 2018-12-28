@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Transfer to other account
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  
+  <ion-item>
+    <ion-label>From:</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>To:</ion-label>
+    <ion-input placeholder = "AC xxxxxx" [(ngModel)] = "otheraccountnumber"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Amount:</ion-label>
+    <ion-input type = "number" placeholder = "S$0.00" [(ngModel)] = "amount"></ion-input>
+  </ion-item>
+
+  <div padding>
+      <button block ion-button (click) = "transfer()" >Transfer</button>
+  </div>
+
+</ion-content>

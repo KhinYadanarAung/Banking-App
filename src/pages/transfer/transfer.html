@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Transfer Page</ion-title>
+  </ion-navbar>
+
+
+</ion-header>
+
+<ion-content inset>
+  <ion-list>
+    <button ion-item (click) = "gotootheraccount()">To other account</button>
+    <button ion-item (click) = "gotocreditcard()">To credit cards</button>
+    <button ion-item (click) = "gotopaynow()">Pay Now</button>
+    <button ion-item (click) = "gotooversea()">Overseas</button>
+  </ion-list>
+  
+  <ion-fab left bottom>
+    <button ion-fab>
+      <ion-icon name="settings"></ion-icon>
+    </button>
+  </ion-fab>
+  
+</ion-content>
+ 
