@@ -30,7 +30,7 @@ export class TransferCreditCardPage {
       this.alldata = _data;
 
       console.log(this.alldata);
-    })
+    });
   }
 
   ionViewDidLoad(){
@@ -57,5 +57,4 @@ export class TransferCreditCardPage {
     this.fdb.list("/mydata/").push(this.creditcardnumber);
     this.fdb.list("/mydata/").push(this.amount);
   }
-  
 }

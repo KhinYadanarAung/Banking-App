@@ -30,7 +30,7 @@ export class TransferOtherAccountPage {
       this.alldata = _data;
 
       console.log(this.alldata);
-    })
+    });
   }
 
   ionViewDidLoad(){
@@ -56,6 +56,5 @@ export class TransferOtherAccountPage {
     }
     this.fdb.list("/mydata/").push(this.otheraccountnumber);
     this.fdb.list("/mydata/").push(this.amount);
-  }
-  
+  } 
 }

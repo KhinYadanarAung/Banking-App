@@ -13,15 +13,15 @@
       <ion-input [(ngModel)] = "creditcardnumber" formControlName = "cardnumber" required></ion-input>
     </ion-item>
     <ion-item *ngIf="cardnumber.hasError('required') && cardnumber.touched">
-        <p> *Receiver's credit card number is required</p>
-      </ion-item>
+      <p> *Receiver's credit card number is required</p>
+    </ion-item>
     <ion-item>
       <ion-label>Amount:</ion-label>
       <ion-input type = "number" [(ngModel)] = "amount" formControlName = "payamount" required></ion-input>
     </ion-item>
     <ion-item *ngIf="payamount.hasError('required') && payamount.touched">
-        <p> *Amount is required</p>
-      </ion-item>
+      <p> *Amount is required</p>
+    </ion-item>
     <div padding>
       <button block ion-button (click) = "transfer()" >Transfer</button>
     </div>
