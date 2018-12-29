@@ -7,22 +7,23 @@
 </ion-header>
 
 <ion-content padding>
-  
-  <ion-item>
-    <ion-label>From:</ion-label>
-    <ion-input></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>To:</ion-label>
-    <ion-input placeholder = "AC xxxxxx" [(ngModel)] = "otheraccountnumber"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Amount:</ion-label>
-    <ion-input type = "number" placeholder = "S$0.00" [(ngModel)] = "amount"></ion-input>
-  </ion-item>
-
-  <div padding>
+  <form [formGroup] = "formgroup">
+    <ion-item>
+      <ion-label>To:</ion-label>
+      <ion-input [(ngModel)] = "otheraccountnumber" formControlName = "accountnumber" required></ion-input>
+    </ion-item>
+    <ion-item *ngIf="accountnumber.hasError('required') && accountnumber.touched">
+        <p> *Receiver's account number is required</p>
+      </ion-item>
+    <ion-item>
+      <ion-label>Amount:</ion-label>
+      <ion-input type = "number" [(ngModel)] = "amount" formControlName = "payamount" required></ion-input>
+    </ion-item>
+    <ion-item *ngIf="payamount.hasError('required') && payamount.touched">
+        <p> *Amount is required</p>
+      </ion-item>
+    <div padding>
       <button block ion-button (click) = "transfer()" >Transfer</button>
-  </div>
-
+    </div>
+  </form>
 </ion-content>

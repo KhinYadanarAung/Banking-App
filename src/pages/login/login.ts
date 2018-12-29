@@ -26,7 +26,7 @@ export class LoginPage {
 
   alert(message: string) {
     this.alertCtrl.create({
-      title: 'Register Failed',
+      title: 'Login Failed',
       subTitle: message,
       buttons: ['OK']
     }).present();
