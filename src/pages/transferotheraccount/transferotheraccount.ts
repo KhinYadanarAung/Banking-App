@@ -4,6 +4,8 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import {FormBuilder, FormGroup, Validators, AbstractControl} from '@angular/forms';
 import { AlertController } from 'ionic-angular';
 
+import { TransferPage } from '../transfer/transfer';
+
 @Component({
   selector: 'page-transferotheraccount',
   templateUrl: 'transferotheraccount.html'
@@ -53,6 +55,7 @@ export class TransferOtherAccountPage {
         buttons: ['OK']
       })
       alert.present();
+      this.navCtrl.push(TransferPage);
     }
     this.fdb.list("/mydata/").push(this.otheraccountnumber);
     this.fdb.list("/mydata/").push(this.amount);

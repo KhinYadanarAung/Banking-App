@@ -9,7 +9,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class HomePage {
     email: string;
   constructor(private fire: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams) {
-    this.email = fire.auth.currentUser.email;
+    this.email = this.fire.auth.currentUser.email;
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoggedinPage');

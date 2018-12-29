@@ -1,9 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams, UrlSerializer } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AlertController } from 'ionic-angular';
 
-import { TransferOtherAccountPage } from '../transferotheraccount/transferotheraccount';
 import { LoginPage } from '../login/login';
 
 

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { Navbar } from 'ionic-angular';
 
 import { TransferOtherAccountPage } from '../transferotheraccount/transferotheraccount';
 import { TransferCreditCardPage } from '../transfercreditcard/transfercreditcard';
