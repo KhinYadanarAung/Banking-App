@@ -10,18 +10,25 @@
   <form [formGroup] = "formgroup">
     <ion-item>
       <ion-label>To:</ion-label>
-      <ion-input [(ngModel)] = "otheraccountnumber" formControlName = "accountnumber" required></ion-input>
+      <ion-input [(ngModel)] = "transferotheraccountmodel.account_number" formControlName = "accountnumber" required></ion-input>
     </ion-item>
     <ion-item *ngIf="accountnumber.hasError('required') && accountnumber.touched">
-        <p> *Receiver's account number is required</p>
-      </ion-item>
+      <p> *Receiver's account number is required</p>
+    </ion-item>
     <ion-item>
       <ion-label>Amount:</ion-label>
-      <ion-input type = "number" [(ngModel)] = "amount" formControlName = "payamount" required></ion-input>
+      <ion-input type = "number" [(ngModel)] = "transferotheraccountmodel.amount" formControlName = "payamount" required></ion-input>
     </ion-item>
     <ion-item *ngIf="payamount.hasError('required') && payamount.touched">
-        <p> *Amount is required</p>
-      </ion-item>
+      <p> *Amount is required</p>
+    </ion-item>
+    <ion-item>
+      <ion-label>Description:</ion-label>
+      <ion-input [(ngModel)] = "transferotheraccountmodel.description" formControlName = "description" required></ion-input>
+    </ion-item>
+    <ion-item *ngIf="description.hasError('required') && description.touched">
+      <p> *Amount is required</p>
+    </ion-item>
     <div padding>
       <button block ion-button (click) = "transfer()" >Transfer</button>
     </div>
