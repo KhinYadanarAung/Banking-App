@@ -1,4 +1,4 @@
-<<ion-header>
+<ion-header>
   <ion-navbar>
     <ion-title>
       Transfer to oversea
@@ -7,7 +7,46 @@
 </ion-header>
 
 <ion-content padding>
-  
+  <form [formGroup] = "formgroup">
+    <ion-item>
+      <ion-label>Country:</ion-label>
+      <ion-input [(ngModel)] = "transferoverseamodel.country_name" formControlName = "country" required></ion-input>
+    </ion-item>
+    <ion-item *ngIf="country.hasError('required') && country.touched">
+      <p> *Receiver's account number is required</p>
+    </ion-item>
+    <ion-item>
+      <ion-label>Bank:</ion-label>
+      <ion-input [(ngModel)] = "transferoverseamodel.bank_name" formControlName = "bank" required></ion-input>
+    </ion-item>
+    <ion-item *ngIf="bank.hasError('required') && bank.touched">
+      <p> *Receiver's account number is required</p>
+    </ion-item>    
+    <ion-item>
+      <ion-label>Account Number:</ion-label>
+      <ion-input [(ngModel)] = "transferoverseamodel.account_number" formControlName = "accountnumber" required></ion-input>
+    </ion-item>
+    <ion-item *ngIf="accountnumber.hasError('required') && accountnumber.touched">
+      <p> *Receiver's account number is required</p>
+    </ion-item>
+    <ion-item>
+      <ion-label>Amount:</ion-label>
+      <ion-input type = "number" [(ngModel)] = "transferoverseamodel.amount" formControlName = "payamount" required></ion-input>
+    </ion-item>
+    <ion-item *ngIf="payamount.hasError('required') && payamount.touched">
+      <p> *Amount is required</p>
+    </ion-item>
+    <ion-item>
+      <ion-label>Description:</ion-label>
+      <ion-input [(ngModel)] = "transferoverseamodel.description" formControlName = "description" required></ion-input>
+    </ion-item>
+    <ion-item *ngIf="description.hasError('required') && description.touched">
+      <p> *Amount is required</p>
+    </ion-item>
+    <div padding>
+      <button block ion-button (click) = "transfer()" >Transfer</button>
+    </div>
+  </form>
 
 </ion-content>
 

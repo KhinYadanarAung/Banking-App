@@ -9,7 +9,7 @@
 <ion-content padding>
   <form [formGroup] = "formgroup">
     <ion-item>
-      <ion-label>To:</ion-label>
+      <ion-label>Account Number:</ion-label>
       <ion-input [(ngModel)] = "transferotheraccountmodel.account_number" formControlName = "accountnumber" required></ion-input>
     </ion-item>
     <ion-item *ngIf="accountnumber.hasError('required') && accountnumber.touched">
