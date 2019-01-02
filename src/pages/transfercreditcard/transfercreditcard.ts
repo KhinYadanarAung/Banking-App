@@ -50,7 +50,7 @@ export class TransferCreditCardPage {
   }
 
   transfer(){
-    if (this.transfercreditcardmodel.creditcard_number == null || this.transfercreditcardmodel.amount == null){
+    if (this.transfercreditcardmodel.creditcard_number == null || this.transfercreditcardmodel.amount == null || this.transfercreditcardmodel.description == null){
       let alert = this.alertCtrl.create({
         title: 'Unsuccessful Transaction!',
         message: 'You need to input account number and amount',
