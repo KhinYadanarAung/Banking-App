@@ -5,7 +5,6 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { FormBuilder, FormGroup, Validators, AbstractControl} from '@angular/forms';
 import { AlertController } from 'ionic-angular';
 import { TransferPage } from '../transfer/transfer';
-import { TransactionModel } from '../../models/transaction.model'; 
 import { TransferCreditCardModel } from '../../models/transfercreditcard.model';
 
 @Injectable()
@@ -71,6 +70,8 @@ export class TransferCreditCardPage {
         // profile_amount +/- transaction_amount
 
         //this.fdb.list(`mydata/${auth.uid}/profile/{}`).set(rec)
+
+         
       })
     })
   }
