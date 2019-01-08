@@ -3,7 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AlertController } from 'ionic-angular';
 
-import { LoginPage } from '../login/login';
+import { ProfilePage } from '../profile/profile';
 
 
 @Component({
@@ -14,16 +14,12 @@ export class RegisterPage {
 
     @ViewChild('gmail') gmail;
     @ViewChild('password') password;
-    @ViewChild('accountno') account;
 
 
   constructor(private fire: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController) {
 
   }
 
-  ionViewDidLoad() {
-      console.log('ionViewDidLoad RegisterPage');
-  }
 
   alert(message: string) {
     this.alertCtrl.create({
@@ -37,12 +33,12 @@ export class RegisterPage {
     this.fire.auth.createUserWithEmailAndPassword(this.gmail.value, this.password.value)
     .then(data => {
         console.log('got data ', data);
-        this.navCtrl.push(LoginPage);
+        this.navCtrl.push(ProfilePage);
     })
     .catch(error => {
         console.log('got an error', error);
         this.alert(error.message);
       });
-    console.log('Would register user with ', this.gmail.value, this.password.value, this.account.value);
+    console.log('Would register user with ', this.gmail.value, this.password.value);
   }
 }

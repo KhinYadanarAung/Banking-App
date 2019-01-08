@@ -5,6 +5,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { FormBuilder, FormGroup, Validators, AbstractControl} from '@angular/forms';
 import { AlertController } from 'ionic-angular';
 import { TransferPage } from '../transfer/transfer';
+import { TransactionModel } from '../../models/transaction.model'; 
 import { TransferCreditCardModel } from '../../models/transfercreditcard.model';
 
 @Injectable()
@@ -15,7 +16,9 @@ import { TransferCreditCardModel } from '../../models/transfercreditcard.model';
 export class TransferCreditCardPage {
 
   transfercreditcardmodel: TransferCreditCardModel= {
-    creditcard_number: '',
+    country_name: '',
+    bank_name: '',
+    account_number: '',
     amount: 0,
     description: '',
   };
@@ -24,9 +27,7 @@ export class TransferCreditCardPage {
   cardnumber:AbstractControl;
   payamount:AbstractControl;
   description:AbstractControl;
-
-  alldata = [];  
-
+ 
   constructor(private fire: AngularFireAuth, private fdb: AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams, public formbuilder:FormBuilder, private alertCtrl: AlertController) {
     this.formgroup = formbuilder.group({
       cardnumber:['',Validators.required],
@@ -38,19 +39,10 @@ export class TransferCreditCardPage {
     this.payamount = this.formgroup.controls['payamount'];
     this.description = this.formgroup.controls['description'];
 
-    this.fdb.list("/mydata/").subscribe(_data => {
-      this.alldata = _data;
-
-      console.log(this.alldata);
-    });
-  }
-
-  ionViewDidLoad(){
-    console.log('ionViewDidLoad TransferOtherAccountPage');
   }
 
   transfer(){
-    if (this.transfercreditcardmodel.creditcard_number == null || this.transfercreditcardmodel.amount == null || this.transfercreditcardmodel.description == null){
+    if (this.transfercreditcardmodel.account_number == null || this.transfercreditcardmodel.amount == null || this.transfercreditcardmodel.description == null){
       let alert = this.alertCtrl.create({
         title: 'Unsuccessful Transaction!',
         message: 'You need to input account number and amount',
@@ -68,7 +60,18 @@ export class TransferCreditCardPage {
       this.navCtrl.push(TransferPage);
     }
     this.fire.authState.take(1).subscribe(auth => {
-      this.fdb.list(`mydata/${auth.uid}/transaction`).push(this.transfercreditcardmodel);
+      this.fdb.list(`mydata/${auth.uid}/transaction/creditcard`).push(this.transfercreditcardmodel);
+      // this.transfercreditcardmodel # transaction_amount 
+      
+
+      this.fdb.list(`mydata/${auth.uid}/profile`).forEach(rec => {
+        
+        console.log(rec)
+        // rec[0].amount # profile_amount
+        // profile_amount +/- transaction_amount
+
+        //this.fdb.list(`mydata/${auth.uid}/profile/{}`).set(rec)
+      })
     })
   }
 }

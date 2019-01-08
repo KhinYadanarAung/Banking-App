@@ -6,11 +6,14 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { TransferPage } from '../pages/transfer/transfer';
 import { PayNowPage } from '../pages/paynow/paynow';
+import { TransactionHistoryPage } from '../pages/transactionhistory/transactionhistory';
 import { TransferCreditCardPage } from '../pages/transfercreditcard/transfercreditcard';
 import { TransferOtherAccountPage } from '../pages/transferotheraccount/transferotheraccount';
 import { TransferOverseaPage } from '../pages/transferoversea/transferoversea';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
+import { ProfilePage  } from '../pages/profile/profile';
+import { DepositPage } from '../pages/deposit/deposit';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -34,11 +37,14 @@ const config = {
     HomePage,
     TransferPage,
     PayNowPage,
+    TransactionHistoryPage,
     TransferCreditCardPage,
     TransferOtherAccountPage,
     TransferOverseaPage,
     LoginPage,
     RegisterPage,
+    ProfilePage,
+    DepositPage,
   ],
   imports: [
     BrowserModule,
@@ -53,11 +59,14 @@ const config = {
     HomePage,
     TransferPage,
     PayNowPage,
+    TransactionHistoryPage,
     TransferCreditCardPage,
     TransferOtherAccountPage,
     TransferOverseaPage,
     LoginPage,
     RegisterPage,
+    ProfilePage,
+    DepositPage
   ],
   providers: [
     StatusBar,

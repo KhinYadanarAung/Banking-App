@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -8,5 +8,20 @@
 </ion-header>
 
 <ion-content padding>
-  {{email}}
+  <ion-card>
+    <ion-card-content>
+        
+          <ion-list>
+            <ion-item *ngFor = "let item of profiledata| async">
+              <h2>Account number: {{item.account_number}}</h2>
+            </ion-item>
+          </ion-list>
+          <ion-list>
+            <ion-item *ngFor = "let item of profiledata| async">
+              <h2>Balance: {{item.amount + 100}} </h2>
+            </ion-item>
+          </ion-list>
+    </ion-card-content>
+  </ion-card>
+  
 </ion-content>

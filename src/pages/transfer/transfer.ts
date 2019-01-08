@@ -5,6 +5,7 @@ import { TransferOtherAccountPage } from '../transferotheraccount/transferothera
 import { TransferCreditCardPage } from '../transfercreditcard/transfercreditcard';
 import { PayNowPage } from '../paynow/paynow';
 import { TransferOverseaPage } from '../transferoversea/transferoversea';
+import { DepositPage } from '../deposit/deposit';
 
 @Component({
   selector: 'page-transfer',
@@ -30,6 +31,10 @@ export class TransferPage {
 
   gotooversea(){
     this.navCtrl.push(TransferOverseaPage);
+  }
+
+  gotodeposit(){
+    this.navCtrl.push(DepositPage);
   }
 
 }

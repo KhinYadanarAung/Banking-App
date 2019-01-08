@@ -1,11 +1,12 @@
 import { Component, Injectable } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, DateTime } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { FormBuilder, FormGroup, Validators, AbstractControl} from '@angular/forms';
 import { AlertController } from 'ionic-angular';
-import { TransferPage } from '../transfer/transfer';
+import { TransactionHistoryPage } from '../transactionhistory/transactionhistory';
 import { TransferOverseaModel } from '../../models/transferoversea.model';
+import { getLocaleDateTimeFormat } from '@angular/common';
 
 @Injectable()
 @Component({
@@ -27,9 +28,7 @@ export class TransferOverseaPage {
   bank:AbstractControl
   accountnumber:AbstractControl;
   payamount:AbstractControl;
-  description:AbstractControl;
-
-  alldata = [];  
+  description:AbstractControl;  
 
   constructor(private fire: AngularFireAuth, private fdb: AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams, public formbuilder:FormBuilder, private alertCtrl: AlertController) {
     this.formgroup = formbuilder.group({
@@ -45,16 +44,6 @@ export class TransferOverseaPage {
     this.accountnumber= this.formgroup.controls['accountnumber'];
     this.payamount = this.formgroup.controls['payamount'];
     this.description = this.formgroup.controls['description'];
-
-    this.fdb.list("/mydata/").subscribe(_data => {
-      this.alldata = _data;
-
-      console.log(this.alldata);
-    });
-  }
-
-  ionViewDidLoad(){
-    console.log('ionViewDidLoad TransferOtherAccountPage');
   }
 
   transfer(){
@@ -73,11 +62,11 @@ export class TransferOverseaPage {
         buttons: ['OK']
       })
       alert.present();
-      this.navCtrl.push(TransferPage);
+      this.navCtrl.push(TransactionHistoryPage);
     }
 
     this.fire.authState.take(1).subscribe(auth => {
-      this.fdb.list(`mydata/${auth.uid}/transaction`).push(this.transferoverseamodel);
+      this.fdb.list(`mydata/${auth.uid}/transaction/oversea`).push(this.transferoverseamodel);
     })
     
   } 

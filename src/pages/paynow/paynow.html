@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>
       Pay Now
     </ion-title>
@@ -7,5 +7,30 @@
 </ion-header>
 
 <ion-content padding>
-  
+  <form [formGroup] = "formgroup">
+    <ion-item>
+      <ion-label>Phone number:</ion-label>
+      <ion-input [(ngModel)] = "transferpaynowmodel.account_number" formControlName = "phone" required></ion-input>
+    </ion-item>
+    <ion-item *ngIf="phone.hasError('required') && phone.touched">
+      <p> *Receiver's credit card number is required</p>
+    </ion-item>
+    <ion-item>
+      <ion-label>Amount:</ion-label>
+      <ion-input type = "number" [(ngModel)] = "transferpaynowmodel.amount" formControlName = "payamount" required></ion-input>
+    </ion-item>
+    <ion-item *ngIf="payamount.hasError('required') && payamount.touched">
+      <p> *Amount is required</p>
+    </ion-item>
+    <ion-item>
+      <ion-label>Description:</ion-label>
+      <ion-input [(ngModel)] = "transferpaynowmodel.description" formControlName = "description" required></ion-input>
+    </ion-item>
+    <ion-item *ngIf="description.hasError('required') && description.touched">
+      <p> *Amount is required</p>
+    </ion-item>
+    <div padding>
+      <button block ion-button (click) = "transfer()" >Transfer</button>
+    </div>
+  </form>
 </ion-content>

@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>
       Transfer to other account
     </ion-title>
@@ -10,21 +10,21 @@
   <form [formGroup] = "formgroup">
     <ion-item>
       <ion-label>Account Number:</ion-label>
-      <ion-input [(ngModel)] = "transferotheraccountmodel.account_number" formControlName = "accountnumber" required></ion-input>
+      <ion-input [(ngModel)] = "transactionmodel.account_number" formControlName = "accountnumber" required></ion-input>
     </ion-item>
     <ion-item *ngIf="accountnumber.hasError('required') && accountnumber.touched">
       <p> *Receiver's account number is required</p>
     </ion-item>
     <ion-item>
       <ion-label>Amount:</ion-label>
-      <ion-input type = "number" [(ngModel)] = "transferotheraccountmodel.amount" formControlName = "payamount" required></ion-input>
+      <ion-input type = "number" [(ngModel)] = "transactionmodel.amount" formControlName = "payamount" required></ion-input>
     </ion-item>
     <ion-item *ngIf="payamount.hasError('required') && payamount.touched">
       <p> *Amount is required</p>
     </ion-item>
     <ion-item>
       <ion-label>Description:</ion-label>
-      <ion-input [(ngModel)] = "transferotheraccountmodel.description" formControlName = "description" required></ion-input>
+      <ion-input [(ngModel)] = "transactionmodel.description" formControlName = "description" required></ion-input>
     </ion-item>
     <ion-item *ngIf="description.hasError('required') && description.touched">
       <p> *Amount is required</p>

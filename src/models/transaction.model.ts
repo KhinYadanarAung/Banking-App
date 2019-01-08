@@ -1,6 +1,4 @@
-import { DateTime } from "ionic-angular";
-
-export interface TransferOverseaModel {
+export interface TransactionModel {
     country_name: string;
     bank_name: string;
     account_number: string;

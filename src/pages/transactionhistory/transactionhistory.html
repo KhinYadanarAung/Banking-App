@@ -1,0 +1,36 @@
+<ion-header>
+    <ion-navbar color="primary">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Transaction History</ion-title>
+    </ion-navbar>
+</ion-header>
+  
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor = "let t of transactiondata | async">
+      <h2>Account No. : {{t.account_number}}</h2> 
+      <h2>Amount : {{t.amount}}</h2> 
+      <h2>Description : {{t.description}}</h2> 
+    </ion-item>
+    <ion-item *ngFor = "let c of transfercreditcarddata | async">
+      <h2>Creditcard No. : {{c.account_number}}</h2> 
+      <h2>Amount : {{c.amount}}</h2> 
+      <h2>Description : {{c.description}}</h2> 
+    </ion-item>
+    <ion-item *ngFor = "let paynow of transferpaynowdata | async">
+      <h2>Phone No. : {{paynow.account_number}}</h2> 
+      <h2>Amount : {{paynow.amount}}</h2> 
+      <h2>Description : {{paynow.description}}</h2> 
+    </ion-item>
+    <ion-item *ngFor = "let oversea of transferoverseadata | async">
+      <h2>Account No. : {{oversea.account_number}} ({{oversea.country_name}} - {{oversea.bank_name}})</h2> 
+      <h2>Amount : {{oversea.amount}}</h2> 
+      <h2>Description : {{oversea.description}}</h2> 
+    </ion-item>
+    <ion-item *ngFor = "let deposit of depositdata | async">
+      <h2>Amount : {{deposit.amount}}</h2> 
+    </ion-item>
+  </ion-list>
+</ion-content>
