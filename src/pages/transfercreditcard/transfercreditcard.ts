@@ -14,6 +14,9 @@ import { TransferCreditCardModel } from '../../models/transfercreditcard.model';
 })
 export class TransferCreditCardPage {
 
+  transferamount: number;
+  currentamount: number;
+
   transfercreditcardmodel: TransferCreditCardModel= {
     country_name: '',
     bank_name: '',
@@ -61,11 +64,12 @@ export class TransferCreditCardPage {
     this.fire.authState.take(1).subscribe(auth => {
       this.fdb.list(`mydata/${auth.uid}/transaction/creditcard`).push(this.transfercreditcardmodel);
       // this.transfercreditcardmodel # transaction_amount 
-      
-
+      this.transferamount = this.transfercreditcardmodel.amount;
       this.fdb.list(`mydata/${auth.uid}/profile`).forEach(rec => {
+        this.currentamount = parseInt(rec[0].amount);
+
+        console.log(this.currentamount-this.transferamount);
         
-        console.log(rec)
         // rec[0].amount # profile_amount
         // profile_amount +/- transaction_amount
 
